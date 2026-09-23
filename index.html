@@ -71,9 +71,14 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative py-20 overflow-hidden border-b border-cardborder/50">
+    <!-- Hero Section avec effet Spotlight -->
+    <section id="hero-section" class="relative py-20 overflow-hidden border-b border-cardborder/50 group">
+        <!-- Fond à grille de points -->
         <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
+        
+        <!-- Spotlight d'interaction curseur -->
+        <div id="hero-spotlight" class="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 z-0" style="background: radial-gradient(600px circle at 0px 0px, rgba(34, 197, 94, 0.15), transparent 80%);"></div>
+
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="max-w-3xl">
                 <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-md bg-cardbg border border-cardborder text-xs font-mono text-gray-300 mb-6">
@@ -86,7 +91,7 @@
                 </h1>
                 
                 <p class="text-lg text-gray-400 mb-8 leading-relaxed">
-                    15 ans. Administrateur de mon propre lab d'infrastructure virtuelle (Proxmox VE, Active Directory, RDS). Passionné par l'univers de l'informatique et de la tech ainsi que de la musique (Tekno, Frenchcore, Hardstyle), la création de contenu et l'automatisation.
+                    15 ans. Administrateur de mon propre lab d'infrastructure virtuelle (Proxmox VE, Active Directory, RDS). Passionné par l'univers de l'informatique et de la tech ainsi que de la musique (Tekno, Tribe, Hardstyle...).
                 </p>
 
                 <div class="flex flex-wrap gap-4 font-mono text-sm">
@@ -105,11 +110,11 @@
     <section class="bg-cardbg/50 border-b border-cardborder py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             <div>
-                <p class="text-3xl font-bold font-mono text-white">2</p>
-                <p class="text-xs text-gray-400 uppercase tracking-wider font-mono mt-1">Nœuds Proxmox VE</p>
+                <p class="text-3xl font-bold font-mono text-white">3</p>
+                <p class="text-xs text-gray-400 uppercase tracking-wider font-mono mt-1">Machines physiques</p>
             </div>
             <div>
-                <p class="text-3xl font-bold font-mono text-brand-500">30+</p>
+                <p class="text-3xl font-bold font-mono text-brand-500">40+</p>
                 <p class="text-xs text-gray-400 uppercase tracking-wider font-mono mt-1">LXC & VMs Actifs</p>
             </div>
             <div>
@@ -149,34 +154,34 @@
                     </div>
 
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
-					    <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🗄️ NAS (100)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🌐 Tailscale (103)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🗄️ NAS (100)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🌐 Tailscale (103)</div>
                         <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📁 Nextcloud (200)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">MySpeed (201)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Heimdall (202)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Librespeed (203)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🛡️ Pi-hole (204)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🎬 Jellyfin (205)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📊 Uptime-Kuma (206)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Homarr (208)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📹 Frigate (209)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Pairdrop (211)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Termix (212)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">rrs-bridge (213)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Adventurelog (214)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">MySpeed (201)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Heimdall (202)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Librespeed (203)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🛡️ Pi-hole (204)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🎬 Jellyfin (205)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📊 Uptime-Kuma (206)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Homarr (208)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📹 Frigate (209)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Pairdrop (211)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Termix (212)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">rrs-bridge (213)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Adventurelog (214)</div>
                         <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🎯 Seerr (215)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Homebox (216)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Metube (219)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🔄 Nginx Proxy (220)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🔐 Vaultwarden (221)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📺 PeerTube (222)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">LibreTranslate (223)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">MiniQR (224)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">BentoPDF (225)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Homebox (216)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Metube (219)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🔄 Nginx Proxy (220)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🔐 Vaultwarden (221)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📺 PeerTube (222)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">LibreTranslate (223)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">MiniQR (224)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">BentoPDF (225)</div>
                         <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">⚡ qBittorrent (226)</div>
                         <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🤖 n8n (227)</div>
                         <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📖 TeklabsWiki (230)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">2FAuth (231)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">2FAuth (231)</div>
                     </div>
                 </div>
 
@@ -195,16 +200,16 @@
 
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
                         <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🏠 HomeAssistant (102)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-brand-500 font-semibold">🗄️ WinServ2022 (104)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-brand-500 font-semibold">🖥️ TSE / RDS (105)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-brand-500 font-semibold">🏢 DC2022 / AD (106)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">ProxDataManager (107)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">MikoPBX (108)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-brand-500 font-semibold">🗄️ WinServ2022 (104)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-brand-500 font-semibold">🖥️ TSE / RDS (105)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-brand-500 font-semibold">🏢 DC2022 / AD (106)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">ProxDataManager (107)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">MikoPBX (108)</div>
                         <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🖼️ Immich (109)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">⛏️ MineSRV (110)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Exchange (111)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">MC01 (120)</div>
-						<div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📞 FreePBX (217)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">⛏️ MineSRV (110)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">Exchange (111)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">MC01 (120)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📞 FreePBX (217)</div>
                         <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">MineDB (218)</div>
                     </div>
                 </div>
@@ -305,13 +310,32 @@
     <!-- Footer -->
     <footer class="py-12 bg-darkbg text-center text-xs text-gray-500 font-mono">
         <div class="max-w-7xl mx-auto px-4">
-            <p class="mb-2">Hosted with ❤️ on GitHub Pages — TekLabs © 2026</p>
+            <p class="mb-2">Hosted on GitHub Pages — TekLabs © 2026</p>
             <p class="text-gray-600">Built with Tailwind CSS & Lucide Icons</p>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
+
+        // Script du Spotlight dynamique
+        const heroSection = document.getElementById('hero-section');
+        const spotlight = document.getElementById('hero-spotlight');
+
+        if (heroSection && spotlight) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                spotlight.style.background = `radial-gradient(50px circle at ${x}px ${y}px, rgba(34, 197, 94, 0.18), transparent 80%)`;
+                spotlight.style.opacity = '1';
+            });
+
+            heroSection.addEventListener('mouseleave', () => {
+                spotlight.style.opacity = '0';
+            });
+        }
     </script>
 </body>
 </html>
