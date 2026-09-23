@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark scroll-smooth">
+<html lang="fr" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech & Homelab Portfolio</title>
+    <title>TekLabs | Portfolio & Homelab</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,704 +12,286 @@
             theme: {
                 extend: {
                     colors: {
-                        cyber: {
-                            dark: '#0a0f1d',
-                            card: '#111827',
-                            border: '#1f293d',
-                            primary: '#10b981', // Vert Néon / Émeraude
-                            secondary: '#06b6d4', // Cyan Néon
-                            purple: '#8b5cf6', // Violet Néon
-                            text: '#e2e8f0'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                        brand: {
+                            50: '#f0fdf4',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                            accent: '#00ff66'
+                        },
+                        darkbg: '#0a0d12',
+                        cardbg: '#121824',
+                        cardborder: '#1e293b'
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0f1d;
-            color: #e2e8f0;
+        body { font-family: 'Inter', sans-serif; }
+        code, pre, .font-mono { font-family: 'Fira Code', monospace; }
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(34, 197, 94, 0.25);
         }
-        .code-font {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        /* Gradient & Glow effects */
-        .neon-glow-primary {
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
-        }
-        .neon-glow-primary:hover {
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
-        }
-        .neon-border {
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-        .grid-bg {
-            background-image: radial-gradient(rgba(31, 41, 61, 0.5) 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0f1d;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1f293d;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #10b981;
+        .glow-effect-hover:hover {
+            box-shadow: 0 0 30px 2px rgba(34, 197, 94, 0.35);
         }
     </style>
 </head>
-<body class="grid-bg min-h-screen flex flex-col selection:bg-emerald-500 selection:text-black">
+<body class="bg-darkbg text-gray-200 antialiased min-h-screen selection:bg-brand-500 selection:text-black">
 
-    <!-- Header / Navigation -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-cyber-dark/80 border-b border-cyber-border">
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-darkbg/80 border-b border-cardborder">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <!-- Logo -->
-            <a href="#" class="flex items-center space-x-2 text-emerald-400 font-bold code-font text-lg hover:text-emerald-300 transition">
-                <i class="fa-solid fa-terminal text-cyan-400"></i>
-                <span>~/homelab/sysadmin</span>
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-9 h-9 rounded-lg bg-brand-500/10 border border-brand-500/30 flex items-center justify-center group-hover:border-brand-500 transition">
+                    <i data-lucide="terminal" class="w-5 h-5 text-brand-500"></i>
+                </div>
+                <span class="font-mono font-bold text-lg text-white tracking-wider">TekLabs<span class="text-brand-500">.sys</span></span>
             </a>
 
-            <!-- Navigation Desktop -->
-            <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#about" class="text-gray-300 hover:text-emerald-400 transition hover:underline underline-offset-4">À propos</a>
-                <a href="#homelab" class="text-gray-300 hover:text-emerald-400 transition hover:underline underline-offset-4">Homelab</a>
-                <a href="#skills" class="text-gray-300 hover:text-emerald-400 transition hover:underline underline-offset-4">Compétences</a>
-                <a href="#projects" class="text-gray-300 hover:text-emerald-400 transition hover:underline underline-offset-4">Projets</a>
-                <a href="#contact" class="text-gray-300 hover:text-emerald-400 transition hover:underline underline-offset-4">Contact</a>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="text-gray-400 hover:text-brand-500 transition">À propos</a>
+                <a href="#nodes" class="text-gray-400 hover:text-brand-500 transition">Infrastructure</a>
+                <a href="#skills" class="text-gray-400 hover:text-brand-500 transition">Compétences</a>
+                <a href="#projects" class="text-gray-400 hover:text-brand-500 transition">Projets & Sound</a>
             </nav>
 
-            <!-- Status Indicator Desktop -->
-            <div class="hidden md:flex items-center space-x-2 text-xs code-font bg-cyber-card px-3 py-1.5 rounded-full border border-cyber-border">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-gray-300">Lab Status: <span class="text-emerald-400 font-semibold">ONLINE</span></span>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none" aria-label="Menu Mobile">
-                <i class="fa-solid fa-bars text-xl"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Navigation Drawer -->
-        <div id="mobile-menu" class="hidden md:hidden bg-cyber-card border-b border-cyber-border px-4 pt-2 pb-4 space-y-3">
-            <a href="#about" class="block text-gray-300 hover:text-emerald-400 font-medium py-1">À propos</a>
-            <a href="#homelab" class="block text-gray-300 hover:text-emerald-400 font-medium py-1">Homelab</a>
-            <a href="#skills" class="block text-gray-300 hover:text-emerald-400 font-medium py-1">Compétences</a>
-            <a href="#projects" class="block text-gray-300 hover:text-emerald-400 font-medium py-1">Projets</a>
-            <a href="#contact" class="block text-gray-300 hover:text-emerald-400 font-medium py-1">Contact</a>
-            <div class="pt-2 flex items-center space-x-2 text-xs code-font">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-gray-300">Lab: <span class="text-emerald-400">100% Operational</span></span>
+            <div class="flex items-center space-x-3">
+                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-mono font-medium bg-brand-500/10 text-brand-500 border border-brand-500/20">
+                    <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse mr-2"></span>
+                    Homelab Online
+                </span>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 space-y-24 py-12">
-
-        <!-- Hero Section -->
-        <section id="hero" class="pt-8 pb-12 flex flex-col md:flex-row items-center justify-between gap-12">
-            <div class="flex-1 space-y-6">
-                <!-- Status Badges -->
-                <div class="flex flex-wrap gap-2 text-xs code-font">
-                    <span class="bg-emerald-950/60 text-emerald-400 border border-emerald-800/60 px-3 py-1 rounded-md flex items-center gap-1.5">
-                        <i class="fa-solid fa-server"></i> Self-Hoster Passionné
-                    </span>
-                    <span class="bg-cyan-950/60 text-cyan-400 border border-cyan-800/60 px-3 py-1 rounded-md flex items-center gap-1.5">
-                        <i class="fa-solid fa-sliders"></i> Audio & Mixing Enthusiast
-                    </span>
+    <!-- Hero Section -->
+    <section class="relative py-20 overflow-hidden border-b border-cardborder/50">
+        <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] opacity-30"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-md bg-cardbg border border-cardborder text-xs font-mono text-gray-300 mb-6">
+                    <i data-lucide="cpu" class="w-4 h-4 text-brand-500"></i>
+                    <span>Proxmox VE • Windows Server 2022 • Audio & Sound Tech</span>
                 </div>
-
-                <!-- Main Title & Typewriter -->
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white">
-                    Bienvenue dans mon <br/>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-purple-500">
-                        Digital Universe
-                    </span>
+                
+                <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-6">
+                    Passionné de <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-emerald-300">SysAdmin</span>, Homelab & Sound Design.
                 </h1>
-
-                <!-- Typewriter Subtitle -->
-                <div class="code-font text-lg sm:text-xl text-gray-300 flex items-center gap-2 h-8">
-                    <span class="text-emerald-400">&gt;</span>
-                    <span id="typewriter-text" class="text-cyan-300 font-semibold"></span>
-                    <span class="w-2 h-5 bg-emerald-400 inline-block animate-pulse"></span>
-                </div>
-
-                <!-- Intro Description -->
-                <p class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl">
-                    Passionné par l'administration système, la virtualisation, les infrastructures auto-hébergées et la création audio/visuelle. J'expérimente au quotidien dans mon propre Homelab.
+                
+                <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+                    15 ans. Administrateur de mon propre lab d'infrastructure virtuelle (Proxmox VE, Active Directory, RDS, Docker). Passionné par la musique électronique (Tekno, Frenchcore, Hardstyle), la création de contenu et l'automatisation.
                 </p>
 
-                <!-- CTA Buttons -->
-                <div class="flex flex-wrap gap-4 pt-2">
-                    <a href="#homelab" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-lg shadow-lg transition duration-200 flex items-center gap-2 neon-glow-primary">
-                        <i class="fa-solid fa-microchip"></i> Explorer mon Lab
+                <div class="flex flex-wrap gap-4 font-mono text-sm">
+                    <a href="#nodes" class="px-6 py-3 rounded-lg bg-brand-500 hover:bg-brand-600 text-black font-semibold transition flex items-center gap-2 glow-effect">
+                        <i data-lucide="server"></i> Explorer l'infra
                     </a>
-                    <a href="#contact" class="bg-cyber-card hover:bg-gray-800 text-gray-200 border border-cyber-border font-semibold px-6 py-3 rounded-lg transition duration-200 flex items-center gap-2">
-                        <i class="fa-solid fa-paper-plane"></i> Me Contacter
+                    <a href="#projects" class="px-6 py-3 rounded-lg bg-cardbg hover:bg-cardborder text-white border border-cardborder transition flex items-center gap-2">
+                        <i data-lucide="disc"></i> TekLabs & Audio
                     </a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Terminal-like Graphic Widget -->
-            <div class="w-full md:w-5/12 lg:w-1/2">
-                <div class="bg-cyber-card border border-cyber-border rounded-xl shadow-2xl overflow-hidden font-mono text-xs sm:text-sm">
-                    <!-- Terminal Bar -->
-                    <div class="bg-gray-900/90 px-4 py-3 border-b border-cyber-border flex items-center justify-between">
-                        <div class="flex space-x-2">
-                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+    <!-- Stats Bar -->
+    <section class="bg-cardbg/50 border-b border-cardborder py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+                <p class="text-3xl font-bold font-mono text-white">2</p>
+                <p class="text-xs text-gray-400 uppercase tracking-wider font-mono mt-1">Nœuds Proxmox VE</p>
+            </div>
+            <div>
+                <p class="text-3xl font-bold font-mono text-brand-500">30+</p>
+                <p class="text-xs text-gray-400 uppercase tracking-wider font-mono mt-1">LXC & VMs Actifs</p>
+            </div>
+            <div>
+                <p class="text-3xl font-bold font-mono text-white">AD CS</p>
+                <p class="text-xs text-gray-400 uppercase tracking-wider font-mono mt-1">Domaine Windows 2022</p>
+            </div>
+            <div>
+                <p class="text-3xl font-bold font-mono text-brand-500">100%</p>
+                <p class="text-xs text-gray-400 uppercase tracking-wider font-mono mt-1">Self-Hosted</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proxmox Nodes & Services -->
+    <section id="nodes" class="py-20 border-b border-cardborder/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-xs font-mono uppercase text-brand-500 tracking-widest mb-2">// Infrastructure</h2>
+                    <h3 class="text-3xl font-bold text-white">Mes Nœuds Proxmox VE</h3>
+                </div>
+                <p class="text-gray-400 text-sm mt-2 md:mt-0 font-mono">2 Hyperviseurs en Production H24</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Node 1: Big01 -->
+                <div class="bg-cardbg border border-cardborder rounded-xl p-6 glow-effect-hover transition">
+                    <div class="flex items-center justify-between border-b border-cardborder pb-4 mb-6">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="hard-drive" class="w-6 h-6 text-brand-500"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Node: Big01</h4>
+                                <p class="text-xs text-gray-400 font-mono">Services Web, Média & Automation</p>
+                            </div>
                         </div>
-                        <span class="text-gray-500 text-xs">sysinfo@homelab-node-01</span>
+                        <span class="px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono">RUNNING</span>
                     </div>
-                    <!-- Terminal Content -->
-                    <div class="p-5 space-y-3 text-gray-300 leading-relaxed bg-slate-950/80">
-                        <p><span class="text-emerald-400">root@homelab-node:~#</span> neofetch</p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2 border-t border-gray-800 text-gray-400">
-                            <div><span class="text-cyan-400 font-bold">OS:</span> Proxmox VE 8.x</div>
-                            <div><span class="text-cyan-400 font-bold">Containers:</span> 24 Active Docker LXC</div>
-                            <div><span class="text-cyan-400 font-bold">Storage:</span> 32TB ZFS TrueNAS</div>
-                            <div><span class="text-cyan-400 font-bold">Network:</span> Tailscale + Reverse Proxy</div>
-                            <div><span class="text-cyan-400 font-bold">Audio DAW:</span> Reaper / FL Studio</div>
-                            <div><span class="text-cyan-400 font-bold">Uptime:</span> 99.98%</div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📁 Nextcloud (200)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🎬 Jellyfin (205)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🎯 Overseerr (215)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">⚡ qBittorrent (226)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🔐 Vaultwarden (221)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🔄 Nginx Proxy (220)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🤖 n8n (227)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📖 TeklabsWiki (230)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🛡️ Pi-hole (204)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📊 Uptime-Kuma (206)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📺 PeerTube (222)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📹 Frigate (209)</div>
+                    </div>
+                </div>
+
+                <!-- Node 2: Optiplex01 -->
+                <div class="bg-cardbg border border-cardborder rounded-xl p-6 glow-effect-hover transition">
+                    <div class="flex items-center justify-between border-b border-cardborder pb-4 mb-6">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="box" class="w-6 h-6 text-brand-500"></i>
+                            <div>
+                                <h4 class="font-bold text-white text-lg">Node: Optiplex01</h4>
+                                <p class="text-xs text-gray-400 font-mono">Infra Windows, Domotique & Core</p>
+                            </div>
                         </div>
-                        <div class="pt-3 border-t border-gray-800 flex items-center justify-between text-xs">
-                            <span class="text-purple-400">[SERVICES]</span>
-                            <span class="text-emerald-400"><i class="fa-solid fa-check"></i> Jellyfin</span>
-                            <span class="text-emerald-400"><i class="fa-solid fa-check"></i> Vaultwarden</span>
-                            <span class="text-emerald-400"><i class="fa-solid fa-check"></i> HomeAssistant</span>
-                        </div>
+                        <span class="px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono">RUNNING</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-brand-500 font-semibold">🏢 DC2022 / AD (106)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-brand-500 font-semibold">🖥️ TSE / RDS (105)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-brand-500 font-semibold">🗄️ WinServ NAS (104)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🏠 HomeAssistant (102)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🖼️ Immich (109)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">🌐 Tailscale (103)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">⛏️ MineSRV (110/120)</div>
+                        <div class="p-2 bg-darkbg/60 rounded border border-cardborder/60 text-gray-300">📞 FreePBX / Miko (217)</div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- About Section -->
-        <section id="about" class="space-y-8">
-            <div class="flex items-center gap-3 border-b border-cyber-border pb-4">
-                <i class="fa-solid fa-user-gear text-emerald-400 text-2xl"></i>
-                <h2 class="text-2xl sm:text-3xl font-bold text-white">À Propos & Passions</h2>
-            </div>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 border-b border-cardborder/50 bg-cardbg/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-xs font-mono uppercase text-brand-500 tracking-widest mb-2">// Skills & Stack</h2>
+            <h3 class="text-3xl font-bold text-white mb-10">Compétences Techniques</h3>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Card 1 -->
-                <div class="bg-cyber-card p-6 rounded-xl border border-cyber-border hover:border-emerald-500/50 transition duration-300 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-xl">
-                            <i class="fa-solid fa-server"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white">SysAdmin & Reseaux</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Passionné par la gestion de serveurs, l'architecture réseau, la sécurité et l'isolation de services via des sous-réseaux et tunnels VPN sécurisés.
-                        </p>
+                <div class="p-6 rounded-xl bg-cardbg border border-cardborder">
+                    <i data-lucide="shield-check" class="w-8 h-8 text-brand-500 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white mb-2">Windows Server & AD</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Déploiement d'Active Directory Domain Services, gestion des GPOs, infrastructure RDS/TSE, et Autorité de Certification (AD CS).</p>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs">
+                        <span class="px-2 py-1 rounded bg-darkbg text-gray-300">Active Directory</span>
+                        <span class="px-2 py-1 rounded bg-darkbg text-gray-300">RDS / TSE</span>
+                        <span class="px-2 py-1 rounded bg-darkbg text-gray-300">GPO</span>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-cyber-card p-6 rounded-xl border border-cyber-border hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-xl">
-                            <i class="fa-solid fa-cubes"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold text-white">Homelab & Self-Hosting</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Création d'un laboratoire virtuel complet chez moi pour déployer et tester des applications open-source, sauvegardes ZFS et conteneurisation Docker.
-                        </p>
+                <div class="p-6 rounded-xl bg-cardbg border border-cardborder">
+                    <i data-lucide="layers" class="w-8 h-8 text-brand-500 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white mb-2">Virtualisation & Réseau</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Gestion d'hyperviseurs Proxmox VE, conteneurisation LXC/Docker, reverse proxies Nginx avec SSL et tunnels sécurisés.</p>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs">
+                        <span class="px-2 py-1 rounded bg-darkbg text-gray-300">Proxmox VE</span>
+                        <span class="px-2 py-1 rounded bg-darkbg text-gray-300">Docker & LXC</span>
+                        <span class="px-2 py-1 rounded bg-darkbg text-gray-300">Tailscale</span>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="bg-cyber-card p-6 rounded-xl border border-cyber-border hover:border-purple-500/50 transition duration-300 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-xl">
-                            <i class="fa-solid fa-sliders"></i>
+                <div class="p-6 rounded-xl bg-cardbg border border-cardborder">
+                    <i data-lucide="sliders" class="w-8 h-8 text-brand-500 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white mb-2">Automation & Scripting</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Création de workflows n8n avec RSS-Bridge, scripts PowerShell (GUI Windows Forms) et automatisation domotique via Home Assistant.</p>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs">
+                        <span class="px-2 py-1 rounded bg-darkbg text-gray-300">n8n</span>
+                        <span class="px-2 py-1 rounded bg-darkbg text-gray-300">PowerShell</span>
+                        <span class="px-2 py-1 rounded bg-darkbg text-gray-300">Home Assistant</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects & Sound -->
+    <section id="projects" class="py-20 border-b border-cardborder/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-xs font-mono uppercase text-brand-500 tracking-widest mb-2">// TekLabs Media</h2>
+            <h3 class="text-3xl font-bold text-white mb-10">Musique & Création de Contenu</h3>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-8 rounded-xl bg-cardbg border border-cardborder flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <i data-lucide="music" class="w-6 h-6 text-brand-500"></i>
+                            <h4 class="text-xl font-bold text-white">Projet TekLabs - Audio & DJing</h4>
                         </div>
-                        <h3 class="text-xl font-semibold text-white">Audio & Mixage</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Exploration sonore, traitement audio, enregistrement et mixage. Traitement du signal acoustique, plugins VST et production musicale autonome.
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Mixage et création d'univers sonores axés sur les musiques électroniques : Tekno, Hardtek, Mental Tribe, Frenchcore et Hardstyle. Série de contenus <span class="text-brand-500 font-mono font-semibold">"1 jour 1 son"</span> diffusée sur TikTok, Instagram et YouTube.
                         </p>
                     </div>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs text-gray-400">
+                        <span>• VirtualDJ</span>
+                        <span>• OBS Studio</span>
+                        <span>• yt-dlp & FFmpeg</span>
+                    </div>
                 </div>
 
-                <!-- Card 4 -->
-                <div class="bg-cyber-card p-6 rounded-xl border border-cyber-border hover:border-amber-500/50 transition duration-300 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-xl">
-                            <i class="fa-solid fa-photo-film"></i>
+                <div class="p-8 rounded-xl bg-cardbg border border-cardborder flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <i data-lucide="gamepad-2" class="w-6 h-6 text-brand-500"></i>
+                            <h4 class="text-xl font-bold text-white">Infrastructure Serveur Minecraft</h4>
                         </div>
-                        <h3 class="text-xl font-semibold text-white">Création de Contenu</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Partage de connaissances, rédaction de documentations, montage vidéo et création de tutoriels pour la communauté Tech et Homelab.
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Administration et déploiement de proxys Velocity reliant plusieurs sous-serveurs (Paper, Purpur, Forge) optimisés pour la fluidité et la haute disponibilité.
                         </p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Homelab & Infrastructure Section -->
-        <section id="homelab" class="space-y-8">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-cyber-border pb-4 gap-4">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-network-wired text-cyan-400 text-2xl"></i>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-white">Mon Homelab & Services</h2>
-                </div>
-                <span class="text-xs code-font text-gray-400 bg-cyber-card px-3 py-1 rounded border border-cyber-border self-start sm:self-auto">
-                    Hosted on bare-metal hardware
-                </span>
-            </div>
-
-            <!-- Grid of Homelab Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Proxmox -->
-                <div class="bg-cyber-card p-6 rounded-xl border border-cyber-border hover:border-emerald-500/40 transition">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-layer-group text-2xl text-orange-400"></i>
-                            <div>
-                                <h3 class="font-bold text-white">Proxmox VE</h3>
-                                <span class="text-xs text-gray-400">Hyperviseur Principal</span>
-                            </div>
-                        </div>
-                        <span class="text-[10px] font-mono bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20">Active</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">Cluster de virtualisation gérant l'ensemble des machines virtuelles (VMs) et conteneurs LXC.</p>
-                    <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-gray-300">
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">LXC</span>
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">QEMU</span>
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">ZFS</span>
-                    </div>
-                </div>
-
-                <!-- TrueNAS -->
-                <div class="bg-cyber-card p-6 rounded-xl border border-cyber-border hover:border-emerald-500/40 transition">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-hard-drive text-2xl text-blue-400"></i>
-                            <div>
-                                <h3 class="font-bold text-white">TrueNAS SCALE</h3>
-                                <span class="text-xs text-gray-400">Stockage Centralisé NAS</span>
-                            </div>
-                        </div>
-                        <span class="text-[10px] font-mono bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20">Self-Hosted</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">Gestionnaire de stockage ZFS pour les backups automatisés, partages SMB/NFS et données médias.</p>
-                    <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-gray-300">
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">RAID-Z2</span>
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">SMB/NFS</span>
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">Snapshots</span>
-                    </div>
-                </div>
-
-                <!-- Docker Environment -->
-                <div class="bg-cyber-card p-6 rounded-xl border border-cyber-border hover:border-emerald-500/40 transition">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-brands fa-docker text-2xl text-cyan-400"></i>
-                            <div>
-                                <h3 class="font-bold text-white">Docker & Portainer</h3>
-                                <span class="text-xs text-gray-400">Conteneurisation</span>
-                            </div>
-                        </div>
-                        <span class="text-[10px] font-mono bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20">Active</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">Déploiement de dizaines micro-services via Docker Compose orchestrés avec Portainer.</p>
-                    <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-gray-300">
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">Docker Compose</span>
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">Portainer</span>
-                    </div>
-                </div>
-
-                <!-- Reverse Proxy & Networking -->
-                <div class="bg-cyber-card p-6 rounded-xl border border-cyber-border hover:border-emerald-500/40 transition">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-shield-halved text-2xl text-purple-400"></i>
-                            <div>
-                                <h3 class="font-bold text-white">Network & VPN</h3>
-                                <span class="text-xs text-gray-400">Reverse Proxy & Security</span>
-                            </div>
-                        </div>
-                        <span class="text-[10px] font-mono bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20">Secured</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">Réseau privé avec Mesh VPN, gestion SSL automatisée via NGINX Proxy Manager / Traefik.</p>
-                    <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-gray-300">
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">Tailscale</span>
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">Cloudflare</span>
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">Pi-hole</span>
-                    </div>
-                </div>
-
-                <!-- Media Center (Jellyfin) -->
-                <div class="bg-cyber-card p-6 rounded-xl border border-cyber-border hover:border-emerald-500/40 transition">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-film text-2xl text-purple-300"></i>
-                            <div>
-                                <h3 class="font-bold text-white">Jellyfin & Media</h3>
-                                <span class="text-xs text-gray-400">Streaming Privé</span>
-                            </div>
-                        </div>
-                        <span class="text-[10px] font-mono bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20">Self-Hosted</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">Plateforme de streaming multimédia privée avec accélération matérielle QuickSync/GPU.</p>
-                    <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-gray-300">
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">Jellyfin</span>
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">Transcoding</span>
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">*Arr Suite</span>
-                    </div>
-                </div>
-
-                <!-- Home Automation -->
-                <div class="bg-cyber-card p-6 rounded-xl border border-cyber-border hover:border-emerald-500/40 transition">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-house-signal text-2xl text-amber-400"></i>
-                            <div>
-                                <h3 class="font-bold text-white">Home Assistant</h3>
-                                <span class="text-xs text-gray-400">Domotique</span>
-                            </div>
-                        </div>
-                        <span class="text-[10px] font-mono bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20">Active</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">Centralisation domotique, suivi de consommation énergétique et automatisation du studio.</p>
-                    <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-gray-300">
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">Zigbee</span>
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">MQTT</span>
-                        <span class="bg-slate-800 px-2 py-0.5 rounded">Dashboard</span>
+                    <div class="flex flex-wrap gap-2 font-mono text-xs text-gray-400">
+                        <span>• Velocity Proxy</span>
+                        <span>• Paper / Purpur</span>
+                        <span>• Linux LXC</span>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Skills & Tech Stack Section -->
-        <section id="skills" class="space-y-8">
-            <div class="flex items-center gap-3 border-b border-cyber-border pb-4">
-                <i class="fa-solid fa-code text-purple-400 text-2xl"></i>
-                <h2 class="text-2xl sm:text-3xl font-bold text-white">Compétences & Stack Tech</h2>
-            </div>
-
-            <!-- Filter Buttons -->
-            <div id="skills-filter" class="flex flex-wrap gap-2">
-                <button data-filter="all" class="filter-btn bg-emerald-500 text-black font-semibold text-xs px-4 py-2 rounded-lg transition">Tous</button>
-                <button data-filter="sysadmin" class="filter-btn bg-cyber-card text-gray-300 hover:text-white font-semibold text-xs px-4 py-2 rounded-lg border border-cyber-border transition">OS & Virtualisation</button>
-                <button data-filter="network" class="filter-btn bg-cyber-card text-gray-300 hover:text-white font-semibold text-xs px-4 py-2 rounded-lg border border-cyber-border transition">Réseau & Sécurité</button>
-                <button data-filter="scripting" class="filter-btn bg-cyber-card text-gray-300 hover:text-white font-semibold text-xs px-4 py-2 rounded-lg border border-cyber-border transition">Automation & Scripting</button>
-                <button data-filter="audio" class="filter-btn bg-cyber-card text-gray-300 hover:text-white font-semibold text-xs px-4 py-2 rounded-lg border border-cyber-border transition">Audio & Média</button>
-            </div>
-
-            <!-- Tech Badges Grid -->
-            <div id="skills-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                <!-- Linux -->
-                <div class="skill-item sysadmin bg-cyber-card p-4 rounded-xl border border-cyber-border flex flex-col items-center justify-center gap-2 hover:scale-105 transition">
-                    <i class="fa-brands fa-linux text-3xl text-yellow-500"></i>
-                    <span class="text-xs font-semibold text-gray-200">Linux / Debian</span>
-                </div>
-                <!-- Windows Server -->
-                <div class="skill-item sysadmin bg-cyber-card p-4 rounded-xl border border-cyber-border flex flex-col items-center justify-center gap-2 hover:scale-105 transition">
-                    <i class="fa-brands fa-windows text-3xl text-blue-400"></i>
-                    <span class="text-xs font-semibold text-gray-200">Active Directory</span>
-                </div>
-                <!-- Docker -->
-                <div class="skill-item sysadmin bg-cyber-card p-4 rounded-xl border border-cyber-border flex flex-col items-center justify-center gap-2 hover:scale-105 transition">
-                    <i class="fa-brands fa-docker text-3xl text-cyan-400"></i>
-                    <span class="text-xs font-semibold text-gray-200">Docker</span>
-                </div>
-                <!-- Proxmox -->
-                <div class="skill-item sysadmin bg-cyber-card p-4 rounded-xl border border-cyber-border flex flex-col items-center justify-center gap-2 hover:scale-105 transition">
-                    <i class="fa-solid fa-server text-3xl text-orange-500"></i>
-                    <span class="text-xs font-semibold text-gray-200">Proxmox VE</span>
-                </div>
-                <!-- Network -->
-                <div class="skill-item network bg-cyber-card p-4 rounded-xl border border-cyber-border flex flex-col items-center justify-center gap-2 hover:scale-105 transition">
-                    <i class="fa-solid fa-network-wired text-3xl text-emerald-400"></i>
-                    <span class="text-xs font-semibold text-gray-200">VLANs & Routing</span>
-                </div>
-                <!-- Tailscale -->
-                <div class="skill-item network bg-cyber-card p-4 rounded-xl border border-cyber-border flex flex-col items-center justify-center gap-2 hover:scale-105 transition">
-                    <i class="fa-solid fa-key text-3xl text-purple-400"></i>
-                    <span class="text-xs font-semibold text-gray-200">Tailscale / WireGuard</span>
-                </div>
-                <!-- Bash Scripting -->
-                <div class="skill-item scripting bg-cyber-card p-4 rounded-xl border border-cyber-border flex flex-col items-center justify-center gap-2 hover:scale-105 transition">
-                    <i class="fa-solid fa-terminal text-3xl text-emerald-500"></i>
-                    <span class="text-xs font-semibold text-gray-200">Bash / Shell</span>
-                </div>
-                <!-- PowerShell -->
-                <div class="skill-item scripting bg-cyber-card p-4 rounded-xl border border-cyber-border flex flex-col items-center justify-center gap-2 hover:scale-105 transition">
-                    <i class="fa-solid fa-code text-3xl text-blue-500"></i>
-                    <span class="text-xs font-semibold text-gray-200">PowerShell</span>
-                </div>
-                <!-- Python / n8n -->
-                <div class="skill-item scripting bg-cyber-card p-4 rounded-xl border border-cyber-border flex flex-col items-center justify-center gap-2 hover:scale-105 transition">
-                    <i class="fa-brands fa-python text-3xl text-yellow-400"></i>
-                    <span class="text-xs font-semibold text-gray-200">Python & n8n</span>
-                </div>
-                <!-- Audio Mixing DAW -->
-                <div class="skill-item audio bg-cyber-card p-4 rounded-xl border border-cyber-border flex flex-col items-center justify-center gap-2 hover:scale-105 transition">
-                    <i class="fa-solid fa-compact-disc text-3xl text-purple-400"></i>
-                    <span class="text-xs font-semibold text-gray-200">DAW / Reaper</span>
-                </div>
-                <!-- Audio Processing -->
-                <div class="skill-item audio bg-cyber-card p-4 rounded-xl border border-cyber-border flex flex-col items-center justify-center gap-2 hover:scale-105 transition">
-                    <i class="fa-solid fa-headphones text-3xl text-pink-400"></i>
-                    <span class="text-xs font-semibold text-gray-200">Mixing & VSTs</span>
-                </div>
-                <!-- Git -->
-                <div class="skill-item scripting bg-cyber-card p-4 rounded-xl border border-cyber-border flex flex-col items-center justify-center gap-2 hover:scale-105 transition">
-                    <i class="fa-brands fa-github text-3xl text-white"></i>
-                    <span class="text-xs font-semibold text-gray-200">Git / GitHub</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="space-y-8">
-            <div class="flex items-center gap-3 border-b border-cyber-border pb-4">
-                <i class="fa-solid fa-diagram-project text-amber-400 text-2xl"></i>
-                <h2 class="text-2xl sm:text-3xl font-bold text-white">Projets & Réalisations</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-cyber-card rounded-xl border border-cyber-border overflow-hidden hover:border-emerald-500/50 transition group flex flex-col justify-between">
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800/60 px-2.5 py-1 rounded">Homelab Proxmox</span>
-                            <span class="text-xs text-gray-500">2024 - Présent</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white group-hover:text-emerald-400 transition">Infrastructure Server & Auto-Hébergement</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Conception et mise en place d'une infrastructure complète sur un serveur physique sous Proxmox VE. Migration de services Cloud vers des alternatives open-source auto-hébergées.
-                        </p>
-                        <ul class="text-xs text-gray-300 space-y-1.5 list-disc list-inside">
-                            <li>Virtualisation avancée (VMs Debian + LXC)</li>
-                            <li>Sauvegardes automatisées avec Proxmox Backup Server</li>
-                            <li>Tunnel VPN sécurisé via Tailscale Mesh</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 pt-0 border-t border-cyber-border/50 mt-4 flex justify-between items-center text-xs code-font">
-                        <span class="text-gray-400">Stack: Proxmox, ZFS, Docker, NPM</span>
-                        <a href="https://github.com" target="_blank" class="text-emerald-400 hover:underline flex items-center gap-1">Docs <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="bg-cyber-card rounded-xl border border-cyber-border overflow-hidden hover:border-cyan-500/50 transition group flex flex-col justify-between">
-                    <div class="p-6 space-y-4">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs font-mono text-cyan-400 bg-cyan-950/60 border border-cyan-800/60 px-2.5 py-1 rounded">Audio Studio Setup</span>
-                            <span class="text-xs text-gray-500">Création Musique / Mix</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition">Configuration Workstation Audio & Traitement Acoustique</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Optimisation d'un environnement de mixage audio professionnel. Calibration matérielle, routage audio virtuel complexe et automatisation via macros.
-                        </p>
-                        <ul class="text-xs text-gray-300 space-y-1.5 list-disc list-inside">
-                            <li>Routage audio ASIO multi-canaux</li>
-                            <li>Chaîne de traitement vocal et d'instruments en temps réel</li>
-                            <li>Intégration d'outils matériels et logiciels dans DAW</li>
-                        </ul>
-                    </div>
-                    <div class="p-6 pt-0 border-t border-cyber-border/50 mt-4 flex justify-between items-center text-xs code-font">
-                        <span class="text-gray-400">Stack: Reaper, VST3, OBS, Dante</span>
-                        <a href="#contact" class="text-cyan-400 hover:underline flex items-center gap-1">Détails <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact & Socials Section -->
-        <section id="contact" class="space-y-8">
-            <div class="flex items-center gap-3 border-b border-cyber-border pb-4">
-                <i class="fa-solid fa-envelope text-emerald-400 text-2xl"></i>
-                <h2 class="text-2xl sm:text-3xl font-bold text-white">Me Contacter & Réseaux</h2>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Contact Info & Socials -->
-                <div class="space-y-6">
-                    <p class="text-gray-300 text-sm leading-relaxed">
-                        Un projet en tête ? Une question sur mon infrastructure Homelab ou envie d'échanger sur la tech, le réseau ou le mixage audio ? N'hésite pas à me contacter !
-                    </p>
-
-                    <!-- Direct Links -->
-                    <div class="space-y-3 font-mono text-sm">
-                        <a href="https://github.com" target="_blank" class="flex items-center gap-4 bg-cyber-card p-4 rounded-xl border border-cyber-border hover:border-emerald-400 transition">
-                            <i class="fa-brands fa-github text-2xl text-white"></i>
-                            <div>
-                                <div class="text-white font-bold">GitHub</div>
-                                <div class="text-xs text-gray-400">github.com/mon-pseudo</div>
-                            </div>
-                        </a>
-
-                        <a href="https://discord.com" target="_blank" class="flex items-center gap-4 bg-cyber-card p-4 rounded-xl border border-cyber-border hover:border-indigo-400 transition">
-                            <i class="fa-brands fa-discord text-2xl text-indigo-400"></i>
-                            <div>
-                                <div class="text-white font-bold">Discord</div>
-                                <div class="text-xs text-gray-400">@mon_username</div>
-                            </div>
-                        </a>
-
-                        <a href="https://linkedin.com" target="_blank" class="flex items-center gap-4 bg-cyber-card p-4 rounded-xl border border-cyber-border hover:border-blue-400 transition">
-                            <i class="fa-brands fa-linkedin text-2xl text-blue-400"></i>
-                            <div>
-                                <div class="text-white font-bold">LinkedIn</div>
-                                <div class="text-xs text-gray-400">linkedin.com/in/mon-profil</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Contact Form -->
-                <div class="bg-cyber-card p-6 rounded-xl border border-cyber-border">
-                    <form id="contact-form" class="space-y-4" onsubmit="handleFormSubmit(event)">
-                        <div>
-                            <label class="block text-xs font-mono text-gray-300 mb-1">Votre Nom / Pseudo</label>
-                            <input type="text" required placeholder="John Doe" class="w-full bg-slate-950 border border-cyber-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-mono text-gray-300 mb-1">Votre Email</label>
-                            <input type="email" required placeholder="john@example.com" class="w-full bg-slate-950 border border-cyber-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-mono text-gray-300 mb-1">Sujet / Message</label>
-                            <textarea rows="4" required placeholder="Bonjour, j'ai vu votre portfolio..." class="w-full bg-slate-950 border border-cyber-border rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold py-3 rounded-lg transition duration-200 flex items-center justify-center gap-2 neon-glow-primary">
-                            <i class="fa-solid fa-paper-plane"></i> Envoyer le message
-                        </button>
-                    </form>
-                    
-                    <!-- Form Status Box -->
-                    <div id="form-status" class="hidden mt-4 p-3 rounded-lg text-xs font-mono text-center"></div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="border-t border-cyber-border bg-cyber-dark/90 py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-500 font-mono space-y-2">
-            <p>Designed & Maintained by <span class="text-emerald-400">Tech & Homelab Admin</span></p>
-            <p>Hébergé gratuitement sur <a href="https://pages.github.com" target="_blank" class="text-cyan-400 hover:underline">GitHub Pages</a></p>
+    <footer class="py-12 bg-darkbg text-center text-xs text-gray-500 font-mono">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="mb-2">Hosted with ❤️ on GitHub Pages — TekLabs © 2026</p>
+            <p class="text-gray-600">Built with Tailwind CSS & Lucide Icons</p>
         </div>
     </footer>
 
-    <!-- Interactive Scripts -->
     <script>
-        // 1. Mobile Navigation Toggle
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // 2. Typewriter Effect
-        const phrases = [
-            "SysAdmin & DevOps Enthusiast",
-            "Homelabber Proxmox & Docker",
-            "Passionné d'Audio & Mixage",
-            "Créateur de Contenu Tech"
-        ];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typewriterEl = document.getElementById('typewriter-text');
-
-        function typeLoop() {
-            const currentPhrase = phrases[phraseIndex];
-            
-            if (isDeleting) {
-                typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 40 : 80;
-
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                typeSpeed = 2000; // Pause at end of word
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(typeLoop, typeSpeed);
-        }
-
-        document.addEventListener('DOMContentLoaded', typeLoop);
-
-        // 3. Skills Interactive Filter
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const skillItems = document.querySelectorAll('.skill-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Style Active Button
-                filterBtns.forEach(b => {
-                    b.classList.remove('bg-emerald-500', 'text-black');
-                    b.classList.add('bg-cyber-card', 'text-gray-300');
-                });
-                btn.classList.add('bg-emerald-500', 'text-black');
-                btn.classList.remove('bg-cyber-card', 'text-gray-300');
-
-                // Filter Items
-                const filter = btn.getAttribute('data-filter');
-                skillItems.forEach(item => {
-                    if (filter === 'all' || item.classList.contains(filter)) {
-                        item.style.display = 'flex';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // 4. Form Submit Handler (Mock Notification)
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            const statusBox = document.getElementById('form-status');
-            
-            statusBox.classList.remove('hidden', 'bg-red-900/50', 'text-red-300');
-            statusBox.classList.add('bg-emerald-950', 'text-emerald-300', 'border', 'border-emerald-800');
-            statusBox.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message envoyé avec succès ! Merci de votre visite.';
-
-            document.getElementById('contact-form').reset();
-
-            setTimeout(() => {
-                statusBox.classList.add('hidden');
-            }, 5000);
-        }
+        lucide.createIcons();
     </script>
 </body>
 </html>
